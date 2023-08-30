@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export default function Home(){
 
-    const [ participants, setParticipants] = useState<String[]>([]); //useStante<String[]> vai tipar minha useState com o tipo String
+    const [ participants, setParticipants] = useState<String[]>([]); //useState<String[]> vai tipar minha useState com o tipo String
     const [ participantName, setParticipantName] = useState('');
 
     function handleParticipantAdd(){
