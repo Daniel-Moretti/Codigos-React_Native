@@ -22,7 +22,7 @@ export default function Home() {
     }
 
     function handleProductRemove(name: String){
-        console.log("chegou aqui")
+        
         Alert.alert('Remover', `Deseja remover ${name}`, 
             [
                 {
