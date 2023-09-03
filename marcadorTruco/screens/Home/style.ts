@@ -1,10 +1,13 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  colorBackground: {
+  allContainer: {
     flex: 1,
     backgroundColor: "#383535",
-    alignItems: "center",
+    justifyContent: 'space-around',
+  },
+  titleContainer: {
+    alignItems: 'center'
   },
   title: {
     color: "white",
@@ -14,25 +17,54 @@ export const styles = StyleSheet.create({
   },
   containerMarker: {
     flexDirection:'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
   },
-  sideNos: {
+  textNos: {
     fontSize: 20,
     fontWeight: "bold",
     color: "#4AA5F9",
+    textAlign: 'center',
   },
-  sideNosResult: {
+  textNosResult: {
     fontSize: 110,
     fontWeight: "bold",
     color: "#4AA5F9",
+    textAlign: 'center'
   },
-  sideEles: {
+  textEles: {
     fontSize: 20,
     fontWeight: "bold",
     color: "#C08DF3",
+    textAlign: 'center'
   },
-  sideElesResult: {
+  textElesResult: {
     fontSize: 110,
     fontWeight: "bold",
     color: "#C08DF3",
+    textAlign: 'center'
   },
+  containerButtonResultsNos: {
+    gap: 15
+  },
+  containerButtonResultsEles: {
+    gap: 15
+  },
+  containerButtonReset: {
+    alignItems: 'center',
+    paddingTop: 30,
+    paddingBottom: 15
+  },
+  buttonReset: {
+    backgroundColor: '#DE9609',
+    height: 56,
+    width: 320,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  buttonResetText: {
+    color: '#ffff',
+    fontSize: 25,
+  }
 });
