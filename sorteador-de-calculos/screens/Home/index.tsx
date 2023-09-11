@@ -10,8 +10,7 @@ export function Home() {
     const [answerUser, setAnswerUser] = useState('') //reposta do usuário
     const [countRight, setCountRight] = useState<number>(0) //contador de acertos
     const [countWrong, setCountWrong] = useState<number>(0) //contador de erros
-    const [points, setPoints] = useState<number>(0)
-    const [result, setResult] = useState('')
+    const [points, setPoints] = useState<number>(0) //contador geral de pontos
 
     function sortearOperacao() {
         
