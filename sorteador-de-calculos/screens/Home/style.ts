@@ -58,19 +58,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
-  containerNumber1: {
-    height: 60,
-    width: 85,
-    backgroundColor: '#4AA5F9',
-    borderRadius: 16,
-    justifyContent: 'center',
-    alignItems: 'center'
-},
-textNumber1: {
-    color: '#ffff',
-    fontWeight: 'bold',
-    fontSize: 32,
-},
+  
   viewResposta: {
     width: '100%',
     height: '60%',

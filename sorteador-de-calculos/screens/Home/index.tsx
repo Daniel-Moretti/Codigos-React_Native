@@ -1,6 +1,7 @@
 import { Alert, Keyboard, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from "./style";
 import { useState } from 'react'
+import { RandomBox } from "../../components/RandomBox";
 
 export function Home() {
 
@@ -118,15 +119,9 @@ export function Home() {
             <View >
                 <Text style={styles.how}>Quanto é: </Text>
                 <View style={styles.containerSorteador}>
-                    <View style={styles.containerNumber1}>
-                        <Text style={styles.textNumber1}>{numberLeft}</Text>
-                    </View>
-                    <View style={styles.containerNumber1}>
-                        <Text style={styles.textNumber1}>{operacao}</Text>
-                    </View>
-                    <View style={styles.containerNumber1}>
-                        <Text style={styles.textNumber1}>{numberRight}</Text>
-                    </View>
+                    <RandomBox sort={numberLeft}/>
+                    <RandomBox sort={operacao}/>
+                    <RandomBox sort={numberRight}/>
                 </View>
                 <Text style={styles.how}>Informe sua resposta: </Text>
                 <View style={styles.viewResposta}>
