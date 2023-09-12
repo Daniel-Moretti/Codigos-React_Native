@@ -105,7 +105,7 @@ export function Home() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Você tem {0} pontos</Text>
+            <Text style={styles.title}>Você tem {points} pontos</Text>
             <View style={styles.acertos}>
                 <Text style={styles.certas}>Certas:   {countRight}</Text>
                 <Text style={styles.erradas}>Erradas:   {countWrong}</Text>
@@ -137,8 +137,6 @@ export function Home() {
                     <TouchableOpacity style={styles.buttonValidate} onPress={funcOperacao}>
                         <Text style={styles.textButtonValidate}>Validar</Text>
                     </TouchableOpacity>
-                    <Text style={styles.textResposta}>Total de pontos:</Text>
-                    <Text style={styles.textResposta}>{points}</Text>
                     <TouchableOpacity style={styles.buttonNewGame} onPress={reset}>
                         <Text style={styles.textButtonNewGame}>Novo Jogo</Text>
                     </TouchableOpacity>
