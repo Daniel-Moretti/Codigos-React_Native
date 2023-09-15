@@ -23,6 +23,8 @@ export default function Home() {
     const [margemRefrigerante, setMargemRefrigerante] = useState('')
     const [totalGeralBebida, setTotalGeralBebida] = useState('')
 
+    const [pessoas, setPessoas] = useState('')
+
     function calcComida() {
 
         let calcCarne = 0
@@ -49,6 +51,7 @@ export default function Home() {
         setAperitivos(calcAperitivos.toString())
         setMargemAperitivos(calcMargemAperitivo.toString())
         setTotalGeralComida(calcTotalGeralComida.toString())
+        setPessoas((parseFloat(homens) + parseFloat(mulheres) + parseFloat(criancas)).toString())
 
         calcBebida()
     }
@@ -75,7 +78,7 @@ export default function Home() {
         const calcMargemCerveja = (calcCerveja * 0.1) / 0.001
         const calcMargemRefrigerante = (calcRefrigerante * 0.1) / 0.001
         const calcMargemAgua = (calcAgua * 0.1) / 0.001
-        const calcTotalGeralBebida = calcCerveja + calcRefrigerante + calcAgua + (calcMargemCerveja * 1000) + (calcMargemRefrigerante * 1000) + (calcMargemAgua * 1000)
+        const calcTotalGeralBebida = calcCerveja + calcRefrigerante + calcAgua + (calcMargemCerveja / 1000) + (calcMargemRefrigerante / 1000) + (calcMargemAgua / 1000)
         setCerveja(calcCerveja.toString())
         setMargemCerveja(calcMargemCerveja.toString())
         setRefrigerante(calcRefrigerante.toString())
@@ -86,6 +89,9 @@ export default function Home() {
     }
 
     function resetGeral() {
+        setHomens('')
+        setMulheres('')
+        setCriancas('')
         setCarne('')
         setMargemCarne('')
         setAperitivos('')
@@ -96,7 +102,7 @@ export default function Home() {
         setMargemRefrigerante('')
         setAgua('')
         setMargemAgua('')
-        setTotalGeralBebida('')
+        setPessoas('')
     }
 
     return (
@@ -140,7 +146,7 @@ export default function Home() {
             </View>
             <View style={styles.resultView}>
                 <Text style={styles.resultText}>Realizamos o cálculo para </Text>
-                <Text style={styles.resultText}>3 participantes </Text>
+                <Text style={styles.resultText}>{pessoas} participantes </Text>
             </View>
             <Text style={styles.title}>Comida</Text>
             <View style={styles.containerTotais}>
@@ -153,12 +159,12 @@ export default function Home() {
             </View>
             <Text style={styles.title}>Bebida</Text>
             <View style={styles.containerTotais}>
-                <Bebida total={cerveja} extra={Number(margemCerveja).toFixed(2)} tipo="Cerveja" />
-                <Bebida total={agua} extra={Number(margemAgua).toFixed(2)} tipo="Água" />
-                <Bebida total={refrigerante} extra={Number(margemRefrigerante).toFixed(2)} tipo="Refrigerante" />
+                <Bebida total={cerveja} extra={Number(margemCerveja).toFixed(0)} tipo="Cerveja" />
+                <Bebida total={agua} extra={Number(margemAgua).toFixed(0)} tipo="Água" />
+                <Bebida total={refrigerante} extra={Number(margemRefrigerante).toFixed(0)} tipo="Refrigerante" />
             </View>
             <View style={styles.boxTotalBebidas}>
-                <Text style={styles.textTotalBebidas}>{Number(totalGeralBebida).toFixed(2)} Litros </Text>
+                <Text style={styles.textTotalBebidas}>{Number(totalGeralBebida).toFixed(1)} Litros </Text>
                 <Text style={styles.textTotalBebidas}>Total </Text>
             </View>
             <View style={styles.viewButton}>
