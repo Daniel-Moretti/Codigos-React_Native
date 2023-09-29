@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "fundamentos",
-    "slug": "fundamentos",
+    "name": "navegacaoReact",
+    "slug": "navegacaoReact",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,17 +11,17 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true,
-      "package": "br.cesul.ads"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "br.cesul.ads"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

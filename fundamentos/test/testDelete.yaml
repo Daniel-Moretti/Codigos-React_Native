@@ -1,0 +1,19 @@
+appId: br.cesul.ads
+---
+- openLink: exp://10.10.6.218:8081
+- repeat:
+    times: 2
+    commands:
+      - tapOn:
+          id: inputParticipantName
+      - inputRandomPersonName
+      - tapOn: 
+          id: buttonAdd
+      - hideKeyboard
+- repeat:
+    times: 2
+    commands:
+      - tapOn: 
+          id: buttonRemove
+      - tapOn: "Sim"
+- assertVisible: "Sem participantes"

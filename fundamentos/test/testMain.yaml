@@ -1,0 +1,10 @@
+appId: br.cesul.ads
+---
+- openLink: exp://10.10.6.218:8081
+- repeat:
+    times: 2
+    commands:
+    - tapOn:
+        id: inputParticipantName
+    - inputText: "Cleiton"
+- assertVisible: "Participante já existe"
