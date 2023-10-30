@@ -8,14 +8,14 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "space-between",
-    paddingBottom: 20,
-    paddingTop: 30,
+    paddingBottom: 10,
+    paddingTop: 10,
   },
   containerInputs: {
-    height: "50%",
+    height: "70%",
     width: "90%",
     justifyContent: "space-around",
-    gap: 10
+    //gap: 5
   },
   input: {
     width: "100%",
@@ -39,15 +39,15 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "600",
     color: "#ffff",
-    paddingBottom: 15,
+    paddingBottom: 5,
     //paddingTop: 20
   },
   textInputs: {
     fontSize: 17,
     fontWeight: "bold",
     color: "#ffff",
-    paddingBottom: 15,
-    paddingTop: 20
+    paddingBottom: 5,
+    paddingTop: 10
   },
   button :{
     width: "90%",

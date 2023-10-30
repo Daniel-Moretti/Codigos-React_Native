@@ -13,7 +13,8 @@ export declare global {
         name: string,
         nameCar: string,
         carYear: string,
-        idade: string
+        idade: string,
+        carValue: string
       };
     }
   }

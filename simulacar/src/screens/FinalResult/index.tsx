@@ -10,7 +10,7 @@ type RouteParams = {
     nameCar: string,
     carYear: string,
     idade: string,
-
+    carValue: string
 }
 
 export function FinalResult() {
@@ -18,18 +18,31 @@ export function FinalResult() {
     const navigation = useNavigation()
 
     const route = useRoute()
-    const { name, nameCar, carYear, idade } = route.params as RouteParams
+    const { name, nameCar, carYear, idade, carValue } = route.params as RouteParams
 
     const [taxaPorIdade, setTaxaPorIdade] = useState<number>(0)
     const [taxaPorAno, setTaxaPorAno] = useState<number>(0)
     const [total, setTotal] = useState<number>(0)
+    const [valorBase, setValorBase] =useState<number>(0)
 
-
-    let valorBase = 1000
+    
 
     console.log(total)
+
+    const novoValorBase = () => {
+        if (parseFloat(carValue) < 50000) {
+            setValorBase(1000)
+        } else if (parseFloat(carValue) >= 50000 && parseFloat(carValue) <= 100000) {
+            setValorBase(1500)
+        } else {
+            setValorBase(2000)
+        }
+        return
+    }
+
     useEffect(() => {
         //console.log("useeffect 01")
+        novoValorBase()
 
         if (parseInt(idade) < 22) {
             let taxa = valorBase * 0.2
@@ -59,7 +72,9 @@ export function FinalResult() {
 
         }
 
-    }, [])
+        
+
+    }, [valorBase])
 
     useEffect(() => {
         //console.log("useeffect 02")
