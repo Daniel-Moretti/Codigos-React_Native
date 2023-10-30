@@ -12,7 +12,7 @@ export function Home() {
     const [countRight, setCountRight] = useState<number>(0) //contador de acertos
     const [countWrong, setCountWrong] = useState<number>(0) //contador de erros
     const [points, setPoints] = useState<number>(0) //contador geral de pontos
-
+    
     function sortearOperacao() {
         
 
