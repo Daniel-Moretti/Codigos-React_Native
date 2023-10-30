@@ -7,27 +7,28 @@ import { useState } from "react";
 
 
 type RouteParams = {
-    name : string,
-    idade : string
+    name: string,
+    idade: string
 }
 
 export function VehicleData() {
 
     const route = useRoute()
-    const {name, idade } = route.params as RouteParams
+    const { name, idade } = route.params as RouteParams
 
     const navigation = useNavigation()
 
     const [nameCar, setNameCar] = useState('')
     const [carYear, setCarYear] = useState('')
-    
+    const [carValue, setCarValue] = useState('')
+
 
     function handleBack() {
         navigation.goBack() //Desempilha uma tela como o botão "voltar" do aparelho.
     }
 
     function handleNext() {
-        navigation.navigate('FinalResult', { name, nameCar, carYear, idade })
+        navigation.navigate('FinalResult', { name, nameCar, carYear, idade, carValue })
     }
 
     return (
@@ -48,6 +49,9 @@ export function VehicleData() {
 
                         <Text style={styles.textInputs}>Qual o ano do seu carro?</Text>
                         <TextInput style={styles.input} keyboardType="numeric" value={carYear} onChangeText={setCarYear}></TextInput>
+
+                        <Text style={styles.textInputs}>Qual o valor do seu carro?</Text>
+                        <TextInput style={styles.input} keyboardType="numeric" value={carValue} onChangeText={setCarValue}></TextInput>
                     </View>
 
 
