@@ -34,6 +34,11 @@ export function Login() {
     function handleNext() {
 
         if (password == "cleitao") {
+            setTimeout(() => {
+                setName('')
+                setPassword('')
+
+            }, 600)
             navigation.navigate('PersonData', { name })
         } else {
             Alert.alert('Nome de usuário ou senha incorretos!!', 'Deseja tentar novamente?',

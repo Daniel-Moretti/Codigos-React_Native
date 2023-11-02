@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import { styles } from "./styles";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 type RouteParams = {
     name: string,
@@ -12,6 +13,8 @@ type RouteParams = {
     idade: string,
     carValue: string
 }
+
+let valorDolar = 5;
 
 export function FinalResult() {
 
@@ -23,11 +26,22 @@ export function FinalResult() {
     const [taxaPorIdade, setTaxaPorIdade] = useState<number>(0)
     const [taxaPorAno, setTaxaPorAno] = useState<number>(0)
     const [total, setTotal] = useState<number>(0)
-    const [valorBase, setValorBase] =useState<number>(0)
+    const [valorBase, setValorBase] = useState<number>(0)
 
-    
+    const [checkboxState, setCheckboxState] = useState(false)
 
-    console.log(total)
+
+    useEffect(() => {
+        novoValorBase()
+    }, [])
+
+    useEffect(() => {
+        setTotal(valorBase + taxaPorIdade + taxaPorAno)
+    }, [taxaPorAno, taxaPorIdade])
+
+    useEffect(() => {
+        calcTaxas()
+    }, [valorBase])
 
     const novoValorBase = () => {
         if (parseFloat(carValue) < 50000) {
@@ -37,25 +51,20 @@ export function FinalResult() {
         } else {
             setValorBase(2000)
         }
-        return
+
+
+
     }
 
-    useEffect(() => {
-        //console.log("useeffect 01")
-        novoValorBase()
-
-        if (parseInt(idade) < 22) {
-            let taxa = valorBase * 0.2
-            setTaxaPorIdade(taxa)
+    function calcTaxas() {
+        if (parseInt(idade) < 22) { 
+            setTaxaPorIdade(valorBase * 0.2)
 
         } else if (parseInt(idade) >= 22 && parseInt(idade) <= 29) {
-            //console.log("Chegou aqui")
-            let taxa = valorBase * 0.18
-            setTaxaPorIdade(taxa)
+            setTaxaPorIdade(valorBase * 0.18)
 
         } else {
-            let taxa = (valorBase * 0.15) * -1
-            setTaxaPorIdade(taxa)
+            setTaxaPorIdade((valorBase * 0.15) * -1)
 
         }
 
@@ -71,19 +80,10 @@ export function FinalResult() {
             setTaxaPorAno((valorBase * 0.10) * -1)
 
         }
-
-        
-
-    }, [valorBase])
-
-    useEffect(() => {
-        //console.log("useeffect 02")
-        setTotal(valorBase + taxaPorIdade + taxaPorAno)
-    }, [taxaPorAno, taxaPorIdade])
-
+    }
 
     function handleBack() {
-        navigation.goBack() //Desempilha uma tela como o botão "voltar" do aparelho.
+        navigation.goBack()
     }
 
     function handleInit() {
@@ -91,6 +91,28 @@ export function FinalResult() {
         setTaxaPorIdade(0)
         setTotal(0)
         navigation.navigate('Login')
+    }
+
+    const alteraCheckBox = () => {
+        setCheckboxState(!checkboxState)
+
+        converteParaDolar()
+
+    }
+
+    function converteParaDolar() {
+
+        if (!checkboxState) {
+            setValorBase(valorBase * valorDolar)
+
+        } else {
+            setValorBase(valorBase / valorDolar)
+
+        }
+
+
+        return
+
     }
 
     return (
@@ -126,6 +148,23 @@ export function FinalResult() {
                         <Text style={styles.textBoxResult}>Total</Text>
                         <Text style={styles.textBoxResult}>R$ {total.toFixed(2)}</Text>
                     </View>
+                    <BouncyCheckbox
+                        size={25}
+                        fillColor="blue"
+                        unfillColor="#E6E6FA"
+                        textStyle={{
+                            color: '#000000',
+                            textDecorationLine: 'none',
+                            right: 9,
+                            fontWeight: "bold"
+                        }}
+                        style={{ marginTop: 16 }}
+                        //ref={(ref: any) => (bouncyCheckboxRef = ref)}
+                        isChecked={checkboxState}
+                        text="Converter para Dólar"
+                        disableBuiltInState
+                        onPress={alteraCheckBox}
+                    />
 
 
                 </View>
