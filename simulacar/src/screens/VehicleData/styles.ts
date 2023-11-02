@@ -7,20 +7,20 @@ export const styles = StyleSheet.create({
   linearGradient: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "space-between",
-    paddingBottom: 10,
-    paddingTop: 10,
+    justifyContent: "space-evenly",
+    paddingBottom: 5,
+    paddingTop: 5,
   },
   containerInputs: {
-    height: "70%",
+    height: "75%",
     width: "90%",
-    justifyContent: "space-around",
+    justifyContent: "center",
     //gap: 5
   },
   input: {
     width: "100%",
     alignItems: "center",
-    height: 46,
+    height: 42,
     backgroundColor: "#ffff",
     color: "black",
     paddingLeft: 10,
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "600",
     color: "#ffff",
-    paddingBottom: 5,
+    //paddingBottom: 5,
     //paddingTop: 20
   },
   textInputs: {
@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#01633D",
     borderRadius: 18,
     justifyContent: "center",
-    marginTop: 0
+    marginTop: 10
   },
   buttonText: {
     fontSize: 22,
