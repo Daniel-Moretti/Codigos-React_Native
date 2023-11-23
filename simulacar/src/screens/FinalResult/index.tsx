@@ -36,11 +36,7 @@ export function FinalResult() {
     }, [])
 
     useEffect(() => {
-        setTotal(valorBase + taxaPorIdade + taxaPorAno)
-    }, [taxaPorAno, taxaPorIdade])
-
-    useEffect(() => {
-        calcTaxas()
+        calcularTaxas()
     }, [valorBase])
 
     const novoValorBase = () => {
@@ -53,34 +49,40 @@ export function FinalResult() {
         }
 
 
-
     }
 
-    function calcTaxas() {
-        if (parseInt(idade) < 22) { 
-            setTaxaPorIdade(valorBase * 0.2)
+    function calcularTaxas() {
 
+        var taxaPorIdade = 0
+
+        if (parseInt(idade) < 22) {
+            taxaPorIdade = valorBase * 0.2
         } else if (parseInt(idade) >= 22 && parseInt(idade) <= 29) {
-            setTaxaPorIdade(valorBase * 0.18)
-
+            taxaPorIdade = valorBase * 0.18
         } else {
-            setTaxaPorIdade((valorBase * 0.15) * -1)
+            taxaPorIdade = (valorBase * 0.15) * -1
 
         }
 
+        const subtotal = valorBase + taxaPorIdade
+
+        var taxaPorAno = 0;
         if (parseInt(carYear) < 2000) {
-            setTaxaPorAno(valorBase * 0.30)
-
+            taxaPorAno = subtotal * 0.30;
         } else if (parseInt(carYear) >= 2000 && parseInt(carYear) <= 2009) {
-            setTaxaPorAno(valorBase * 0.15)
-
+            taxaPorAno = subtotal * 0.15;
         } else if (parseInt(carYear) >= 2010 && parseInt(carYear) <= 2015) {
-            setTaxaPorAno(0)
+            taxaPorAno = 0;
         } else {
-            setTaxaPorAno((valorBase * 0.10) * -1)
-
+            taxaPorAno = (subtotal * 0.10) * -1;
         }
+
+        setTaxaPorIdade(taxaPorIdade)
+        setTaxaPorAno(taxaPorAno)
+        setTotal(valorBase + taxaPorIdade + taxaPorAno)
+
     }
+
 
     function handleBack() {
         navigation.goBack()

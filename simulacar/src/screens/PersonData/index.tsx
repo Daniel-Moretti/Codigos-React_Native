@@ -66,8 +66,8 @@ export function PersonData() {
 
                 </View>
 
-                <TouchableOpacity style={styles.button} >
-                    <Text style={styles.buttonText} onPress={handleNext}>Próximo</Text>
+                <TouchableOpacity style={styles.button} onPress={handleNext}>
+                    <Text style={styles.buttonText} >Próximo</Text>
                 </TouchableOpacity>
 
                 <View >

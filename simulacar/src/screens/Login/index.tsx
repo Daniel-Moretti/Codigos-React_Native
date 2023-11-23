@@ -92,8 +92,8 @@ export function Login() {
                             onChangeText={setPassword}></TextInput>
                     </View>
 
-                    <TouchableOpacity style={styles.button} >
-                        <Text style={styles.buttonText} onPress={handleNext}>Logar</Text>
+                    <TouchableOpacity style={styles.button} onPress={handleNext}>
+                        <Text style={styles.buttonText}>Logar</Text>
                     </TouchableOpacity>
                 </View>
 

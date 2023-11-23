@@ -54,7 +54,7 @@ export function VehicleData() {
                             <TextInputMask
                                 style={styles.input}
                                 value={plateCar}
-                                onChangeText={setPlateCar}
+                                onChangeText={(text) => setPlateCar(text.toUpperCase())}
                                 type={'custom'}
                                 options={{
                                     mask: 'AAA-9A99',
@@ -71,8 +71,8 @@ export function VehicleData() {
 
                     </View>
 
-                    <TouchableOpacity style={styles.button} >
-                        <Text style={styles.buttonText} onPress={handleNext}>Próximo</Text>
+                    <TouchableOpacity style={styles.button} onPress={handleNext}>
+                        <Text style={styles.buttonText} >Próximo</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity >
