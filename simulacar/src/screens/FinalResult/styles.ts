@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
     paddingStart: 12,
     paddingEnd: 12,
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   boxResultTotal: {
     backgroundColor: "#D9D9D9",
@@ -54,14 +54,14 @@ export const styles = StyleSheet.create({
     textAlignVertical: "center",
     color: "black",
   },
-  button :{
+  button: {
     width: "90%",
     alignItems: "center",
     height: 46,
     backgroundColor: "#01633D",
     borderRadius: 18,
     justifyContent: "center",
-    marginTop: 0
+    marginTop: 0,
   },
   buttonText: {
     fontSize: 22,
@@ -72,5 +72,5 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     color: "#5987CC",
     fontWeight: "bold",
-  }
+  },
 });

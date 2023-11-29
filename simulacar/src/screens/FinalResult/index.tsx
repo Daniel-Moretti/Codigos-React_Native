@@ -132,23 +132,23 @@ export function FinalResult() {
 
                     <View style={styles.boxResult}>
                         <Text style={styles.textBoxResult}>Base</Text>
-                        <Text style={styles.textBoxResult}>R$ {valorBase.toFixed(2)}</Text>
+                        <Text style={styles.textBoxResult}>{checkboxState ? 'US$' : 'R$'} {valorBase.toFixed(2)}</Text>
 
                     </View>
 
                     <View style={styles.boxResult}>
                         <Text style={styles.textBoxResult}>por idade</Text>
-                        <Text style={styles.textBoxResult}>R$ {taxaPorIdade.toFixed(2)}</Text>
+                        <Text style={styles.textBoxResult}>{checkboxState ? 'US$' : 'R$'} {taxaPorIdade.toFixed(2)}</Text>
                     </View>
 
                     <View style={styles.boxResult}>
                         <Text style={styles.textBoxResult}>por ano</Text>
-                        <Text style={styles.textBoxResult}>R$ {taxaPorAno.toFixed(2)}</Text>
+                        <Text style={styles.textBoxResult}>{checkboxState ? 'US$' : 'R$'} {taxaPorAno.toFixed(2)}</Text>
                     </View>
 
                     <View style={styles.boxResultTotal}>
                         <Text style={styles.textBoxResult}>Total</Text>
-                        <Text style={styles.textBoxResult}>R$ {total.toFixed(2)}</Text>
+                        <Text style={styles.textBoxResult}>{checkboxState ? 'US$' : 'R$'} {total.toFixed(2)}</Text>
                     </View>
                     <BouncyCheckbox
                         size={25}
