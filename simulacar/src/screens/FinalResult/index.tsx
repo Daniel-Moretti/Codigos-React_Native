@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import { styles } from "./styles";
+import axios from 'axios';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 type RouteParams = {
@@ -14,7 +15,7 @@ type RouteParams = {
     carValue: string
 }
 
-let valorDolar = 5;
+//let valorDolar = 5;
 
 export function FinalResult() {
 
@@ -30,6 +31,8 @@ export function FinalResult() {
 
     const [checkboxState, setCheckboxState] = useState(false)
 
+    const [valorDolar, setValorDolar] = useState<number>(0)
+
 
     useEffect(() => {
         novoValorBase()
@@ -38,6 +41,25 @@ export function FinalResult() {
     useEffect(() => {
         calcularTaxas()
     }, [valorBase])
+
+    useEffect(() => {
+        const buscaValorDolar = async () => {
+          try {
+            const response = await axios.get(
+              'https://api.exchangerate-api.com/v4/latest/USD'
+            );
+    
+            if (response.data && response.data.rates) {
+              const { rates } = response.data;
+              setValorDolar(rates.BRL); // Valor do dólar em relação ao real
+            }
+          } catch (error) {
+            console.error('Erro ao obter valor do dólar:', error);
+          }
+        };
+    
+        buscaValorDolar();
+      }, []);
 
     const novoValorBase = () => {
         if (parseFloat(carValue) < 50000) {
@@ -103,12 +125,13 @@ export function FinalResult() {
     }
 
     function converteParaDolar() {
+        console.log("Valor atual do doalr: ", valorDolar)
 
         if (!checkboxState) {
-            setValorBase(valorBase * valorDolar)
+            setValorBase(valorBase / valorDolar)
 
         } else {
-            setValorBase(valorBase / valorDolar)
+            setValorBase(valorBase * valorDolar)
 
         }
 
@@ -167,6 +190,7 @@ export function FinalResult() {
                         disableBuiltInState
                         onPress={alteraCheckBox}
                     />
+                    <Text style={styles.textBoxResult}>Valor atual do dólar: U$ {valorDolar}</Text>
 
 
                 </View>
